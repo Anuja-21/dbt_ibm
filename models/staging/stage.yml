@@ -1,19 +1,30 @@
 models:
-  - name: stg_orders
+  - name: stg_nations
+    description: Table for nation's data
     columns:
-      - name: total_price
+      - name: nation_id
+        description: Primary key for this table
         data_tests:
-          - order_values:
-              arguments:
-                val: 850
-              config:
-                store_failures: TRUE
+          - unique
+          - not_null
+
   - name: stg_regions
     columns:
       - name: name
         data_tests:
           - accepted_values:
               arguments:
-                values: ['AFRICA', 'AMERICA', 'ASIA', 'EUROPE']
+                values: ['AFRICA', 'ASIA', 'EUROPE', 'AMERICA']
+              config:
+                store_failures: TRUE
+
+  - name: stg_orders
+    description: order information table
+    columns:
+      - name: total_price
+        data_tests:
+          - order_values:
+              arguments:
+                val: "{{var('v_min_order')}}"
               config:
                 store_failures: TRUE
