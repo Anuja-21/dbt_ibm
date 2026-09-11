@@ -40,3 +40,8 @@ models:
   my_new_project:
     staging:
       +materialized: table
+    intermediate:
+      +schema: inter
+vars:
+  v_min_order: 850
+

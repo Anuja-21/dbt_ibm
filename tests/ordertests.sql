@@ -1,5 +1,7 @@
-{% test order_values(model,column_name,val) %}
+{% test order_values(model, column_name, val) %}
+
 select *
-from {{ model }} where {{ column_name }} <={{ val }}
+from {{ model }}
+where {{ column_name }} <= {{ val }}
 
 {% endtest %}

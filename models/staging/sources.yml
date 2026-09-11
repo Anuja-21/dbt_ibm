@@ -4,11 +4,27 @@ sources:
     schema: mkmall
     tables:
       - name: regions
+        description: raw data for regions
       - name: nations
+        description: raw data for nations
+        columns:
+          - name: n_nationkey
+            data_tests: 
+              - unique
+              - not_null
+
+              
       - name: customers
+        description: raw data for customers
       - name: suppliers
       - name: lineitems
+        description: raw data for linitems
       - name: orders
+        data_tests:
+         - order_values:
+            val: 880
+
+        description: raw data for orders
         config:
           freshness: 
             warn_after: 
